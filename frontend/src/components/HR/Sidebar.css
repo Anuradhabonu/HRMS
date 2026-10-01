@@ -1,0 +1,542 @@
+
+/* =========================================================
+   HR SIDEBAR
+   ========================================================= */
+
+.hr-sidebar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  bottom: 0;
+
+  width: 260px;
+
+  background: #ffffff;
+  border-right: 1px solid #dbeafe;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+
+  transition:
+    width 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   COLLAPSED SIDEBAR
+   ========================================================= */
+
+.hr-sidebar-collapsed {
+  width: 88px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.hr-sidebar-header {
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid #e0f2fe;
+
+  flex-shrink: 0;
+}
+
+.hr-sidebar-collapsed .hr-sidebar-header {
+  justify-content: center;
+  padding: 0 10px;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.hr-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+}
+
+.hr-brand-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  flex-shrink: 0;
+
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+.hr-brand-icon-small {
+  width: 40px;
+  height: 40px;
+}
+
+.hr-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.hr-brand-title {
+  color: #172554;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+.hr-brand-subtitle {
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   COLLAPSE BUTTON
+   ========================================================= */
+
+.hr-sidebar-collapse-btn {
+  width: 30px;
+  height: 30px;
+
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+
+  background: #eff6ff;
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hr-sidebar-collapse-btn svg {
+  font-size: 20px;
+}
+
+.hr-sidebar-collapse-btn:hover {
+  background: #dbeafe;
+  color: #1d4ed8;
+
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.hr-sidebar-nav {
+  flex: 1;
+
+  padding: 18px 12px 12px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+
+.hr-sidebar-nav::-webkit-scrollbar {
+  width: 5px;
+}
+
+.hr-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.hr-sidebar-nav::-webkit-scrollbar-thumb {
+  background: #bfdbfe;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.hr-nav-section-title {
+  height: 28px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.9px;
+}
+
+/* =========================================================
+   SIDEBAR ITEM
+   ========================================================= */
+
+.hr-sidebar-item {
+  width: 100%;
+  min-height: 48px;
+
+  margin-bottom: 6px;
+
+  padding: 0 13px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: transparent;
+  color: #475569;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  position: relative;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hr-sidebar-collapsed .hr-sidebar-item {
+  justify-content: center;
+  padding: 0;
+}
+
+/* =========================================================
+   ITEM ICON
+   ========================================================= */
+
+.hr-sidebar-item-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.hr-sidebar-item-icon svg {
+  font-size: 23px;
+}
+
+/* =========================================================
+   ITEM LABEL
+   ========================================================= */
+
+.hr-sidebar-item-label {
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.hr-sidebar-item:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.hr-sidebar-item-active {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.hr-sidebar-item-active:hover {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.hr-sidebar-item-active .hr-sidebar-item-icon svg {
+  color: #2563eb;
+}
+
+/* =========================================================
+   ACTIVE INDICATOR
+   ========================================================= */
+
+.hr-active-indicator {
+  position: absolute;
+
+  right: 8px;
+
+  width: 4px;
+  height: 24px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+}
+
+/* =========================================================
+   BOTTOM SECTION
+   ========================================================= */
+
+.hr-sidebar-bottom {
+  padding: 12px;
+
+  border-top: 1px solid #e0f2fe;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.hr-profile-item {
+  min-height: 58px;
+}
+
+.hr-profile-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.hr-profile-name {
+  max-width: 145px;
+
+  color: #172554;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hr-profile-email {
+  max-width: 145px;
+
+  margin-top: 2px;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.hr-logout-item {
+  margin-top: 4px;
+
+  color: #475569;
+}
+
+.hr-logout-item:hover {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* =========================================================
+   MOBILE OVERLAY
+   ========================================================= */
+
+.hr-sidebar-overlay {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.35);
+
+  z-index: 999;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .hr-sidebar {
+    width: 240px;
+  }
+
+  .hr-sidebar-collapsed {
+    width: 82px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .hr-sidebar {
+    top: 64px;
+
+    width: 260px;
+
+    transform: translateX(-100%);
+
+    box-shadow: none;
+  }
+
+  .hr-sidebar-collapsed {
+    width: 260px;
+
+    transform: translateX(-100%);
+  }
+
+  .hr-sidebar-mobile-open,
+  .hr-sidebar-collapsed.hr-sidebar-mobile-open {
+    transform: translateX(0);
+
+    box-shadow: 8px 0 30px rgba(15, 23, 42, 0.12);
+  }
+
+  .hr-sidebar-overlay {
+    display: block;
+  }
+
+  /* On mobile always show text */
+  .hr-sidebar-collapsed .hr-sidebar-header {
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .hr-sidebar-collapsed .hr-sidebar-brand {
+    display: flex;
+  }
+
+  .hr-sidebar-collapsed .hr-sidebar-brand + .hr-brand-icon-small {
+    display: none;
+  }
+
+  .hr-sidebar-collapsed .hr-sidebar-item {
+    justify-content: flex-start;
+    padding: 0 13px;
+  }
+
+  .hr-sidebar-collapsed .hr-sidebar-item-label,
+  .hr-sidebar-collapsed .hr-profile-info {
+    display: block;
+  }
+
+  .hr-sidebar-collapsed .hr-nav-section-title {
+    display: flex;
+  }
+
+  .hr-sidebar-collapsed .hr-sidebar-header {
+    display: flex;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .hr-sidebar {
+    width: 245px;
+  }
+
+  .hr-sidebar-header {
+    min-height: 70px;
+  }
+
+  .hr-sidebar-item {
+    min-height: 46px;
+  }
+
+  .hr-sidebar-item-label {
+    font-size: 13px;
+  }
+
+  .hr-sidebar-item-icon svg {
+    font-size: 21px;
+  }
+
+  .hr-profile-name {
+    font-size: 12px;
+  }
+
+  .hr-profile-email {
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.hr-sidebar-item:focus-visible,
+.hr-sidebar-collapse-btn:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hr-sidebar,
+  .hr-sidebar-item,
+  .hr-sidebar-collapse-btn {
+    transition: none;
+  }
+}

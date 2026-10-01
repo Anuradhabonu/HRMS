@@ -1,0 +1,856 @@
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f4f7fb;
+  color: #172033;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
+.app-shell {
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 82px;
+  --navbar-height: 64px;
+
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background: #f4f7fb;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   SIDEBAR STATES
+   ========================================================= */
+
+.app-shell.sidebar-expanded {
+  --sidebar-width: 260px;
+}
+
+.app-shell.sidebar-collapsed {
+  --sidebar-width: 82px;
+}
+
+/* =========================================================
+   EMPLOYEE
+   ========================================================= */
+
+.employee-app-shell {
+  --employee-sidebar-width: 260px;
+  --employee-sidebar-collapsed-width: 82px;
+}
+
+.employee-app-shell.sidebar-expanded {
+  --employee-sidebar-width: 260px;
+}
+
+.employee-app-shell.sidebar-collapsed {
+  --employee-sidebar-width: 82px;
+}
+
+/* =========================================================
+   PAGE LAYOUT
+   ========================================================= */
+
+.page-layout {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding-top: 64px;
+
+  background: #f4f7fb;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+  position: relative;
+
+  width: calc(100% - var(--sidebar-width));
+
+  min-width: 0;
+
+  min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
+
+  margin-left: var(--sidebar-width);
+
+  padding: 28px;
+
+  background: #f4f7fb;
+
+  overflow-x: hidden;
+
+  transition:
+    width 0.25s ease,
+    margin-left 0.25s ease;
+}
+
+/* HR */
+
+.app-shell:not(.employee-app-shell)
+.sidebar-expanded
+.main-content {
+  width: calc(100% - 260px);
+  margin-left: 260px;
+}
+
+.app-shell:not(.employee-app-shell)
+.sidebar-collapsed
+.main-content {
+  width: calc(100% - 82px);
+  margin-left: 82px;
+}
+
+/* =========================================================
+   EMPLOYEE CONTENT
+   ========================================================= */
+
+.employee-main-content {
+  position: relative;
+
+  width: calc(100% - 260px);
+
+  min-width: 0;
+
+  min-height: calc(100vh - 64px);
+  min-height: calc(100dvh - 64px);
+
+  margin-left: 260px;
+
+  padding: 28px;
+
+  background: #f4f7fb;
+
+  overflow-x: hidden;
+
+  transition:
+    width 0.25s ease,
+    margin-left 0.25s ease;
+}
+
+.app-shell.employee-app-shell.sidebar-expanded
+.employee-main-content {
+  width: calc(100% - 260px);
+  margin-left: 260px;
+}
+
+.app-shell.employee-app-shell.sidebar-collapsed
+.employee-main-content {
+  width: calc(100% - 82px);
+  margin-left: 82px;
+}
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img {
+  display: block;
+  height: auto;
+}
+
+/* =========================================================
+   GLOBAL BACK BUTTON
+   ========================================================= */
+
+.global-back-button {
+  position: fixed;
+
+  top: 78px;
+  left: 18px;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #172033;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 14px rgba(24, 39, 75, 0.12);
+
+  z-index: 10000;
+
+  transition: 0.2s ease;
+}
+
+.global-back-button:hover {
+  transform: translateX(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(24, 39, 75, 0.18);
+}
+
+.global-back-button:active {
+  transform: scale(0.94);
+}
+
+/* =========================================================
+   MOBILE OVERLAY
+   ========================================================= */
+
+.mobile-overlay {
+  display: none;
+}
+
+/* =========================================================
+   CONTENT SAFETY
+   ========================================================= */
+
+.main-content > *,
+.employee-main-content > * {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.main-content table,
+.employee-main-content table {
+  max-width: 100%;
+}
+
+.main-content pre,
+.employee-main-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  .page-layout {
+    padding-top: 64px;
+  }
+
+  .main-content,
+  .employee-main-content {
+    width: 100% !important;
+
+    min-width: 0;
+
+    margin-left: 0 !important;
+
+    padding: 22px;
+  }
+
+  .mobile-overlay {
+    display: block;
+
+    position: fixed;
+
+    top: 64px;
+    left: 0;
+
+    width: 100vw;
+    height: calc(100vh - 64px);
+    height: calc(100dvh - 64px);
+
+    background: rgba(15, 23, 42, 0.28);
+
+    z-index: 1800;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    width: 100%;
+
+    min-width: 0;
+    max-width: 100%;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    --navbar-height: 64px;
+    --sidebar-width: 0px;
+
+    overflow-x: hidden;
+  }
+
+  .page-layout {
+    width: 100%;
+
+    min-width: 0;
+    max-width: 100%;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding-top: 64px;
+
+    overflow-x: hidden;
+  }
+
+  /* =======================================================
+     MAIN CONTENT
+     ======================================================= */
+
+  .main-content,
+  .employee-main-content,
+  .app-shell.sidebar-expanded .main-content,
+  .app-shell.sidebar-collapsed .main-content,
+  .app-shell.employee-app-shell.sidebar-expanded
+  .employee-main-content,
+  .app-shell.employee-app-shell.sidebar-collapsed
+  .employee-main-content {
+
+    width: 100% !important;
+
+    max-width: 100%;
+
+    min-width: 0;
+
+    min-height: calc(100vh - 64px);
+    min-height: calc(100dvh - 64px);
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding: 16px;
+
+    overflow-x: hidden;
+
+    z-index: 1;
+  }
+
+  /* =======================================================
+     MOBILE OVERLAY
+     ======================================================= */
+
+  .mobile-overlay {
+    display: block;
+
+    position: fixed;
+
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100vw;
+
+    background: rgba(15, 23, 42, 0.32);
+
+    backdrop-filter: blur(2px);
+
+    z-index: 1800;
+  }
+
+  /* =======================================================
+     HR SIDEBAR MOBILE
+     ======================================================= */
+
+  .hr-sidebar {
+    position: fixed !important;
+
+    top: 64px !important;
+    left: -280px !important;
+
+    width: 260px !important;
+
+    height: calc(100vh - 64px) !important;
+    height: calc(100dvh - 64px) !important;
+
+    z-index: 1900 !important;
+
+    transition:
+      left 0.3s ease !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    box-shadow:
+      8px 0 25px rgba(0, 0, 0, 0.12);
+  }
+
+  .hr-sidebar.hr-sidebar-mobile-open {
+    left: 0 !important;
+  }
+
+  .hr-sidebar-collapsed {
+    width: 260px !important;
+  }
+
+  /* Mobile sidebar close button */
+
+  .hr-mobile-sidebar-close {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #f1f3f7;
+    color: #374151;
+
+    font-size: 20px;
+
+    cursor: pointer;
+  }
+
+  /* Hide desktop collapse button on mobile */
+
+  .hr-sidebar-collapse-btn {
+    display: none !important;
+  }
+
+  /* =======================================================
+     OVERLAY
+     ======================================================= */
+
+  .hr-sidebar-overlay {
+    position: fixed !important;
+
+    top: 64px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+
+    width: 100vw !important;
+
+    height: calc(100vh - 64px) !important;
+    height: calc(100dvh - 64px) !important;
+
+    background: rgba(15, 23, 42, 0.35);
+
+    backdrop-filter: blur(2px);
+
+    z-index: 1850 !important;
+  }
+
+  /* =======================================================
+     MOBILE MENU BUTTON
+     ======================================================= */
+
+  .hr-mobile-menu-button {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #f1f3f7;
+    color: #172033;
+
+    font-size: 24px;
+
+    cursor: pointer;
+  }
+
+  /* =======================================================
+     GLOBAL BACK BUTTON
+     ======================================================= */
+
+  .global-back-button {
+    top: 72px;
+    left: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 17px;
+  }
+
+  /* =======================================================
+     FORM
+     ======================================================= */
+
+  input,
+  textarea,
+  select,
+  button {
+    max-width: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+
+  /* =======================================================
+     TABLE
+     ======================================================= */
+
+  .table-container,
+  .table-wrapper,
+  .responsive-table {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* =======================================================
+     MODALS
+     ======================================================= */
+
+  .modal-overlay,
+  .project-modal-overlay,
+  .notification-modal-overlay,
+  .leave-modal-overlay,
+  .profile-modal-overlay {
+    padding: 12px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .main-content,
+  .employee-main-content {
+    width: 100% !important;
+
+    min-width: 0;
+
+    margin-left: 0 !important;
+
+    padding: 14px;
+  }
+
+  .hr-sidebar {
+    width: 260px !important;
+    left: -280px !important;
+  }
+
+  .hr-sidebar.hr-sidebar-mobile-open {
+    left: 0 !important;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .main-content,
+  .employee-main-content {
+    padding: 12px;
+  }
+
+  .hr-sidebar {
+    width: 250px !important;
+    left: -270px !important;
+  }
+
+  .hr-sidebar.hr-sidebar-mobile-open {
+    left: 0 !important;
+  }
+}
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 320px) {
+
+  .main-content,
+  .employee-main-content {
+    padding: 10px;
+  }
+}
+
+/* =========================================================
+   MOBILE CARD SAFETY
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .main-content .card,
+  .main-content .dashboard-card,
+  .main-content .summary-card,
+  .main-content .project-card,
+  .main-content .notification-card,
+  .main-content .leave-card,
+  .main-content .report-card,
+  .employee-main-content .card,
+  .employee-main-content .dashboard-card,
+  .employee-main-content .summary-card,
+  .employee-main-content .project-card,
+  .employee-main-content .notification-card,
+  .employee-main-content .leave-card,
+  .employee-main-content .report-card {
+
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .main-content h1,
+  .main-content h2,
+  .main-content h3,
+  .main-content h4,
+  .main-content p,
+  .main-content span,
+  .main-content label,
+  .employee-main-content h1,
+  .employee-main-content h2,
+  .employee-main-content h3,
+  .employee-main-content h4,
+  .employee-main-content p,
+  .employee-main-content span,
+  .employee-main-content label {
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* =========================================================
+   MOBILE GRID
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .main-content .grid,
+  .main-content .cards-grid,
+  .main-content .dashboard-grid,
+  .main-content .summary-grid,
+  .employee-main-content .grid,
+  .employee-main-content .cards-grid,
+  .employee-main-content .dashboard-grid,
+  .employee-main-content .summary-grid {
+
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* =========================================================
+   MOBILE FLEX
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .main-content .row,
+  .main-content .header,
+  .main-content .page-header,
+  .employee-main-content .row,
+  .employee-main-content .header,
+  .employee-main-content .page-header {
+
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* =========================================================
+   SVG
+   ========================================================= */
+
+svg {
+  max-width: 100%;
+}
+
+/* =========================================================
+   PAGE ANIMATION
+   ========================================================= */
+
+.main-content,
+.employee-main-content {
+  animation: pageContentIn 0.2s ease;
+}
+
+@keyframes pageContentIn {
+
+  from {
+    opacity: 0.96;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .main-content,
+  .employee-main-content {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  html,
+  body,
+  #root,
+  .app-shell,
+  .page-layout {
+
+    width: 100% !important;
+
+    min-height: auto !important;
+
+    overflow: visible !important;
+  }
+
+  .main-content,
+  .employee-main-content {
+
+    width: 100% !important;
+
+    margin-left: 0 !important;
+
+    padding: 0 !important;
+
+    min-height: auto !important;
+
+    background: #ffffff !important;
+
+    overflow: visible !important;
+  }
+
+  .mobile-overlay,
+  .hr-sidebar-overlay {
+    display: none !important;
+  }
+}

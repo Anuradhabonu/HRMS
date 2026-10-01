@@ -1,0 +1,29 @@
+services:
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/backend/Dockerfile
+
+    container_name: hrms_backend
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
+
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/frontend/Dockerfile
+
+    container_name: hrms_frontend
+
+    ports:
+      - "5173:80"
+
+    depends_on:
+      - backend
+
+    restart: unless-stopped
